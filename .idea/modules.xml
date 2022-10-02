@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/VirtualWorldTest.iml" filepath="$PROJECT_DIR$/.idea/VirtualWorldTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/YGOConsistency.iml" filepath="$PROJECT_DIR$/.idea/YGOConsistency.iml" />
     </modules>
   </component>
 </project>
