@@ -1,4 +1,4 @@
-import math
+import math, time, itertools
 
 deck = [
     "Lulu", "Lulu", "Lulu",
@@ -68,40 +68,25 @@ tests = 0
 successful_tests = 0
 
 
-def get_card(hand_size, deck_size, hand=[]):
-    if len(hand) == hand_size:
+def generate_hands(deck, hand_size):
+    result_list = list(itertools.combinations(deck, hand_size))
+    for item in result_list:
         global tests
         tests += 1
-        print(round(tests / total_tests * 100, 2), "%")
-        if test(hand):
+        if test(item):
             global successful_tests
             successful_tests += 1
-    else:
-        for n in range(len(hand), hand_size):
-            for o in range(deck_size):
-                if o not in hand:
-                    hand.append(o)
-                    get_card(hand_size, deck_size, hand)
-                    hand.remove(o)
-            return
 
 
-def test(ids):
+def test(hand):
     for n in range(len(combos)):
-        hand = convert(ids)
         if set(combos[n]).issubset(hand):
             return True
     return False
 
 
-def convert(ids):
-    hand = []
-    for n in range(len(ids)):
-        hand.append(deck[ids[n]])
-    return hand
-
-
-get_card(hand_size, len(deck))
-print(tests)
-print(successful_tests)
+t0 = time.time()
+generate_hands(deck, hand_size)
+t1 = time.time()
 print(successful_tests / tests * 100, "%")
+print(t1 - t0)
